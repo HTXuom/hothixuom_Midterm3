@@ -1,8 +1,9 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/layout/Navbar";
-import Home from "./components/layout/Home";
-const App = () => {
+import Home from "./components/layouts/Home";
+import { Navbar } from "./components/layouts/Navbar";
+
+function App() {
   return (
     <div className="App">
       <Router>
@@ -11,5 +12,5 @@ const App = () => {
       </Router>
     </div>
   );
-};
+}
 export default App;

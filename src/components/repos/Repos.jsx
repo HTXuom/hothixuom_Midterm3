@@ -1,23 +1,14 @@
-import PropTypes from 'prop-types';
+import React from "react";
+import { RepoItem } from "./RepoItem";
 
-const Repos = ({ repos }) => (
-    <div>
-        <h2>Repositories</h2>
-        {repos.map((repo) => (
-            <div key={repo.id} className="card">
-                <h3>
-                    <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                        {repo.name}
-                    </a>
-                </h3>
-                <p>{repo.description}</p>
-            </div>
-        ))}
-    </div>
-);
-
-Repos.propTypes = {
-    repos: PropTypes.array.isRequired,
+const Repos = ({ repos }) => {
+    return (
+        <div>
+            <h2>Repositories</h2>
+            {repos.map((repo) => (
+                <RepoItem key={repo.id} repo={repo} />
+            ))}
+        </div>
+    );
 };
-
 export default Repos;

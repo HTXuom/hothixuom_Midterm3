@@ -1,5 +1,7 @@
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import React from "react";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <nav className="navbar bg-success">
       <h1>
@@ -7,11 +9,10 @@ const Navbar = () => {
       </h1>
       <ul>
         <li>
-          <a href="#>">Home</a>
-          <a href="#>">About</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
         </li>
       </ul>
     </nav>
   );
 };
-export default Navbar;
