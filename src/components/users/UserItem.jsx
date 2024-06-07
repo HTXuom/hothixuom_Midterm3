@@ -1,6 +1,4 @@
 import React from "react";
-
-
 const UserItem = (props) => {
     const { login, avatar_url, html_url } = props.user;
 

@@ -1,18 +1,15 @@
-import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
-import Search from "./components/users/Search";
-
+import Home from "./components/layout/Home";
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
-      <div className="container">
-        <h1>GitHub Users Data</h1>
-        <Search />
-      </div>
+      <Router>
+        <Navbar />
+        <Home />
+      </Router>
     </div>
   );
 };
-
 export default App;

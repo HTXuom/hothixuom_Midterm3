@@ -1,38 +1,29 @@
-// User.js
 import axios from "axios";
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Repos from "../repos/Repos";
-
 const User = () => {
     const { id } = useParams();
     const [user, setUser] = useState({});
     const [repos, setRepos] = useState([]);
-
     const getUser = async (username) => {
         try {
-            const response = await axios.get(
-                `https://api.github.com/users/${username}`
-            );
+            const response = await axios.get(`https://api.github.com/users/${username}`);
             const data = response.data;
             setUser(data);
         } catch (error) {
             console.error("Error fetching data:", error.message);
         }
     };
-
-    const getUserRepos = async (id) => {
+    const getUserRepos = async (username) => {
         try {
-            const response = await axios.get(
-                `https://api.github.com/users/${id}/repos`
-            );
+            const response = await axios.get(`https://api.github.com/users/${username}/repos`);
             const data = response.data;
             setRepos(data);
         } catch (error) {
-            console.error("Error fetching repositories:", error.message);
+            console.error("Error fetching repos:", error.message);
         }
     };
-
     useEffect(() => {
         getUser(id);
         getUserRepos(id);
@@ -53,25 +44,16 @@ const User = () => {
         public_gists,
         hireable,
     } = user;
-
     return (
         <Fragment>
             <Link to="/" className="btn btn-light">
                 Back to Search
             </Link>
-            Hireable: {hireable ? (
-                <i className="fas fa-check text-success" />
-            ) : (
-                <i className="fas fa-times-circle text-danger" />
-            )}
+            Hireable:{" "}
+            {hireable ? <i className="fas fa-check text-success" /> : <i className="fas fa-times-circle text-danger" />}
             <div className="card grid-2">
                 <div className="all-center">
-                    <img
-                        src={avatar_url}
-                        alt={name}
-                        className="round-img"
-                        style={{ width: "150px" }}
-                    />
+                    <img src={avatar_url} alt={name} className="round-img" style={{ width: "150px" }} />
                     <h1>{name}</h1>
                     <p>{location}</p>
                 </div>
@@ -82,12 +64,7 @@ const User = () => {
                             <p>{bio}</p>
                         </Fragment>
                     )}
-                    <a
-                        href={html_url}
-                        className="btn btn-dark my-1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a href={html_url} className="btn btn-dark my-1" target="_blank" rel="noopener noreferrer">
                         Show Github Profile
                     </a>
                     <ul>
@@ -130,5 +107,4 @@ const User = () => {
         </Fragment>
     );
 };
-
 export default User;
